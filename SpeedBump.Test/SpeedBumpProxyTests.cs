@@ -14,7 +14,7 @@ namespace SpeedBump.Test
         public async Task SpeedBumpProxy_NullContext_Exception()
         {
 
-            var proxy = new SpeedBumpProxyMiddlewear( null );
+            var proxy = new SpeedBumpProxyMiddlewear( null, null );
             await proxy.InvokeAsync( null, null );
         }
 
@@ -23,7 +23,7 @@ namespace SpeedBump.Test
         public async Task SpeedBumpProxy_NullAnalyzer_Exception()
         {
 
-            var proxy = new SpeedBumpProxyMiddlewear( null );
+            var proxy = new SpeedBumpProxyMiddlewear( null, null );
             await proxy.InvokeAsync( new DefaultHttpContext(), null );
         }
     }
