@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SpeedBump.Core;
+using SpeedBump.Core.Models;
 
 namespace SpeedBump
 {
@@ -19,6 +20,10 @@ namespace SpeedBump
         public void ConfigureServices( IServiceCollection services )
         {
             services.AddScoped<IRequestAnalyzer, RandomDelay>();
+
+            var config = new SpeedBumpConfig();
+            Configuration.Bind("SpeedBump", config);
+            services.AddSingleton<SpeedBumpConfig>(config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
